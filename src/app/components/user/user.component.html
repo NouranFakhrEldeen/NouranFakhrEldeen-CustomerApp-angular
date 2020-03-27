@@ -1,0 +1,92 @@
+<div class="row page">
+  <div class="col-md-5">
+    <div>
+      <p class="Welcome">Welcome to Cutomer App</p>
+    </div>
+
+    <div>
+      <p class="This-is-an-artificia">
+        This is a centralized restaurant management system.
+      </p>
+    </div>
+
+    <img src="../../../assets/cafe.png" class="image" />
+  </div>
+
+  <div class="col-md-7 Rectangle">
+    <div>
+      <p class="Signin">
+        Sign in
+      </p>
+    </div>
+
+    <div>
+      <p class="subtitle">
+        Please insert your login details below
+      </p>
+    </div>
+    <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control input input-email"
+          formControlName="email"
+          [(ngModel)]="loginModel.email"
+          aria-describedby="emailHelp"
+          placeholder="Email"
+          required
+        />
+        <div
+          *ngIf="
+            loginForm.controls['email'].invalid &&
+            (loginForm.controls['email'].dirty ||
+              loginForm.controls['email'].touched)
+          "
+          class="alert alert-danger  alert-dismissible text-center "
+        >
+          <div *ngIf="loginForm.controls['email'].errors.required">
+            email is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control input input-password"
+          formControlName="password"
+          type="password"
+          [(ngModel)]="loginModel.password"
+          placeholder="Password"
+        />
+        <div
+          *ngIf="
+            loginForm.controls['password'].invalid &&
+            (loginForm.controls['password'].dirty ||
+              loginForm.controls['password'].touched)
+          "
+          class="alert alert-danger  alert-dismissible text-center "
+        >
+          <div *ngIf="loginForm.controls['password'].errors.required">
+            password is required.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class=" btn btn-lg btn-primary  text-uppercase input input-sign-in"
+          [disabled]="loginForm.invalid"
+        >
+          Sign in
+        </button>
+        <div
+          style="text-align: center; margin-left: 72px;margin-top: 9px;color:red"
+        >
+          {{ loginErrorMSG }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

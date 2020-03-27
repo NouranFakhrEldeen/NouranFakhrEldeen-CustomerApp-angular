@@ -1,0 +1,177 @@
+<div class="card" style="margin:1rem; margin-top:5rem">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    modifiers
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <button
+          class="btn "
+          style="margin: 1rem ; background-color: #008080 ; color: #ffffff"
+          (click)="openModifierModel(Modifier)"
+        >
+          <i class="fa fa-plus"></i>
+          Add New Modifier
+        </button>
+      </span>
+      <table class="table  table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Maxpicks</th>
+          <th class="text-center">Multiselect</th>
+
+          <th class="text-center">Action</th>
+        </tr>
+        <tr *ngFor="let item of Modifier; let id = index">
+          <!-- <td></td> -->
+          <!-- <td>
+            <span
+              (keyup)="changeValue(id, 'title', $event)"
+              (blur)="updateList(id, 'title', $event)"
+              contenteditable="true"
+              >{{ item.title }}</span
+            >
+          </td>
+          <td>
+            <span
+              contenteditable="true"
+              (keyup)="changeValue(id, 'speaker', $event)"
+              (blur)="updateList(id, 'speaker', $event)"
+              >{{ item.speaker }}</span
+            >
+          </td>
+          <td>
+            <span
+              contenteditable="true"
+              (keyup)="changeValue(id, 'from', $event)"
+              (blur)="updateList(id, 'from', $event)"
+              >{{ item.from }}</span
+            >
+          </td>
+          <td>
+            <span
+              contenteditable="true"
+              (keyup)="changeValue(id, 'to', $event)"
+              (blur)="updateList(id, 'to', $event)"
+              >{{ item.to }}</span
+            >
+          </td> -->
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.maxpicks }}</td>
+          <td>
+            <input type="checkbox" [checked]="item.multiselect" disabled />
+          </td>
+
+          <!-- <td>
+              <span class="table-up">
+                <a class="indigo-text">
+                  up
+                </a>
+              </span>
+              <span class="table-down">
+                <a class="indigo-text">
+                  down
+                </a>
+              </span>
+            </td> -->
+          <td>
+            <span class="table-remove">
+              <!-- <button
+                type="button"
+                mdbBtn
+                rounded="true"
+                size="sm"
+                class="btn btn-danger"
+              >
+              (click)="remove(item)" -->
+              <!-- Remove
+              </button> -->
+            </span>
+            <a>
+              <i class="fa fa-pencil" style="margin: 4% ; color:#008080 "></i>
+            </a>
+
+            <i class="fa fa-trash-o" style="margin: 4% ;color: red"></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #Modifier>
+  <form [formGroup]="ModifierForm" (ngSubmit)="addModifier()">
+    <div class="form-group">
+      <input
+        style="margin-top:1rem"
+        type="text"
+        placeholder="name"
+        formControlName="name"
+        class="form-control"
+        [(ngModel)]="ModifierModel.name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="description"
+        formControlName="description"
+        class="form-control"
+        [(ngModel)]="ModifierModel.description"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        placeholder="description"
+        formControlName="description"
+        class="form-control"
+        [(ngModel)]="ModifierModel.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="number"
+        placeholder="maxpicks"
+        formControlName="maxpicks"
+        class="form-control"
+        [(ngModel)]="ModifierModel.maxpicks"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        (change)="OnChange($event)"
+        [(checked)]="IsChecked"
+        type="checkbox"
+        placeholder="multiselect"
+        formControlName="multiselect"
+        class="form-control"
+        [(ngModel)]="ModifierModel.multiselect"
+        required
+      />
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-primary mr-1"
+        style="background-color: #e60000"
+        (click)="onSubmit()"
+      >
+        Add
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="modalRef.hide()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>
+-->
