@@ -1,5 +1,5 @@
 export class ModifierModel {
-  id: string;
+  _id: string;
   description: string;
   maxpicks: Number;
   multiselect: boolean;

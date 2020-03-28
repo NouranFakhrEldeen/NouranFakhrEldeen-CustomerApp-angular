@@ -11,9 +11,10 @@ import { HttpClientModule } from "@angular/common/HTTP";
 import { ModifiersComponent } from "./components/modifiers/modifiers.component";
 import { ToastrModule } from "ngx-toastr";
 import { ModalModule } from "ngx-bootstrap/modal";
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ModifiersComponent],
+  declarations: [AppComponent, UserComponent, ModifiersComponent, ProductComponent],
   imports: [
     BrowserModule,
     FormsModule,
