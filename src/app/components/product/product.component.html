@@ -1,1 +1,261 @@
-<p>product works!</p>
+<div class="card" style="margin:1rem; margin-top:5rem">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    Products
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <button
+          class="btn "
+          style="margin: 1rem ; background-color: #008080 ; color: #ffffff"
+          (click)="openProductModel(Product)"
+        >
+          <i class="fa fa-plus"></i>
+          Add New Product
+        </button>
+      </span>
+      <table class="table  table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">quantity</th>
+          <th class="text-center">store</th>
+          <th class="text-center">comment</th>
+          <th class="text-center">Modifiers</th>
+
+          <th class="text-center">Action</th>
+        </tr>
+        <tr *ngFor="let item of Products; let id = index">
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.store }}</td>
+          <td>{{ item.comment }}</td>
+
+          <td *ngFor="let name of item.Modifiername">
+            <tr>
+              <td>{{ name.Modifiername }}</td>
+            </tr>
+          </td>
+
+          <!-- <td>
+                    <span class="table-up">
+                      <a class="indigo-text">
+                        up
+                      </a>
+                    </span>
+                    <span class="table-down">
+                      <a class="indigo-text">
+                        down
+                      </a>
+                    </span>
+                  </td> -->
+          <td>
+            <span class="table-remove">
+              <!-- <button
+                      type="button"
+                      mdbBtn
+                      rounded="true"
+                      size="sm"
+                      class="btn btn-danger"
+                    >
+                    (click)="remove(item)" -->
+              <!-- Remove
+                    </button> -->
+            </span>
+
+            <i
+              class="fa fa-pencil"
+              style="margin: 4% ; color:#008080 ; font-size: 25px"
+              (click)="openEditModal(EditProduct, item)"
+            ></i>
+            <a (click)="remove(item)">
+              <i
+                class="fa fa-trash-o"
+                style="margin: 4% ;color: red; font-size: 25px"
+              ></i>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #Product>
+  <form
+    [formGroup]="ProductForm"
+    (ngSubmit)="addProduct(ProductForm.value)"
+    style="margin: 10%"
+  >
+    <h2>
+      Add New Product
+    </h2>
+    <input
+      type="hidden"
+      formControlName="_id"
+      [(ngModel)]="ModifierModel._id"
+    />
+    <div class="form-group">
+      <input
+        style="margin-top:2rem"
+        type="text"
+        placeholder="name"
+        formControlName="name"
+        class="form-control"
+        [(ngModel)]="ProductModel.name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        #description
+        placeholder="description"
+        formControlName="description"
+        class="form-control"
+        [(ngModel)]="ProductModel.description"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        placeholder="price"
+        formControlName="price"
+        class="form-control"
+        [(ngModel)]="ProductModel.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="comment"
+        formControlName="comment"
+        class="form-control"
+        [(ngModel)]="ProductModel.comment"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="store"
+        formControlName="store"
+        class="form-control"
+        [(ngModel)]="ProductModel.store"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <select
+        [(ngModel)]="ProductModel.Modifier"
+        class="form-control"
+        formControlName="ModifierId"
+        [ngClass]="{
+          'is-invalid': submitted && ProductForm.controls['ModifierId'].errors
+        }"
+      >
+        <option value="" disabled>Please Select Modifier</option>
+        <option *ngFor="let Modifier of allModifiers" [value]="Modifier._id">
+          {{ Modifier.name }}</option
+        >
+      </select>
+      <div
+        *ngIf="submitted && ProductForm.controls['ModifierId'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="ProductForm.controls['ModifierId'].errors.required">
+          Modifier is required
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button
+        class="btn btn-primary mr-1"
+        style="background-color: #008080"
+        type="submit"
+      >
+        Add
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="modalRef.hide()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #EditProduct>
+  <form
+    [formGroup]="ProductForm"
+    (ngSubmit)="editProduct(ProductForm.value)"
+    style="margin: 10%"
+  >
+    <h2>
+      Edit Selected Product
+    </h2>
+    <input type="hidden" formControlName="_id" [(ngModel)]="ProductModel._id" />
+    <div class="form-group">
+      <input
+        style="margin-top:2rem"
+        type="text"
+        placeholder="name"
+        formControlName="name"
+        class="form-control"
+        [(ngModel)]="ProductModel.name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        #description
+        placeholder="description"
+        formControlName="description"
+        class="form-control"
+        [(ngModel)]="ProductModel.description"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        placeholder="price"
+        formControlName="price"
+        class="form-control"
+        [(ngModel)]="ProductModel.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <ng-multiselect-dropdown
+        [placeholder]="'custom placeholder'"
+        [data]="dropdownList"
+        [(ngModel)]="ProductModel"
+        [settings]="dropdownSettings"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-primary mr-1"
+        style="background-color: #008080"
+        type="submit"
+      >
+        Add
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="modalRef.hide()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>

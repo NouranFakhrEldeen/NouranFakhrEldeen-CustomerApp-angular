@@ -5,16 +5,21 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { UserComponent } from "./components/user/user.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { RepositoryService } from "./services/repository.service";
 import { HttpClientModule } from "@angular/common/HTTP";
 import { ModifiersComponent } from "./components/modifiers/modifiers.component";
 import { ToastrModule } from "ngx-toastr";
 import { ModalModule } from "ngx-bootstrap/modal";
-import { ProductComponent } from './components/product/product.component';
+import { ProductComponent } from "./components/product/product.component";
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ModifiersComponent, ProductComponent],
+  declarations: [
+    AppComponent,
+    UserComponent,
+    ModifiersComponent,
+    ProductComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -24,6 +29,7 @@ import { ProductComponent } from './components/product/product.component';
     AppRoutingModule,
     ToastrModule.forRoot(),
     ModalModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [RepositoryService],
