@@ -25,39 +25,6 @@
           <th class="text-center">Action</th>
         </tr>
         <tr *ngFor="let item of Modifiers; let id = index">
-          <!-- <td></td> -->
-          <!-- <td>
-            <span
-              (keyup)="changeValue(id, 'title', $event)"
-              (blur)="updateList(id, 'title', $event)"
-              contenteditable="true"
-              >{{ item.title }}</span
-            >
-          </td>
-          <td>
-            <span
-              contenteditable="true"
-              (keyup)="changeValue(id, 'speaker', $event)"
-              (blur)="updateList(id, 'speaker', $event)"
-              >{{ item.speaker }}</span
-            >
-          </td>
-          <td>
-            <span
-              contenteditable="true"
-              (keyup)="changeValue(id, 'from', $event)"
-              (blur)="updateList(id, 'from', $event)"
-              >{{ item.from }}</span
-            >
-          </td>
-          <td>
-            <span
-              contenteditable="true"
-              (keyup)="changeValue(id, 'to', $event)"
-              (blur)="updateList(id, 'to', $event)"
-              >{{ item.to }}</span
-            >
-          </td> -->
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>
           <td>{{ item.price }}</td>
@@ -66,31 +33,8 @@
             <input type="checkbox" [checked]="item.multiselect" disabled />
           </td>
 
-          <!-- <td>
-              <span class="table-up">
-                <a class="indigo-text">
-                  up
-                </a>
-              </span>
-              <span class="table-down">
-                <a class="indigo-text">
-                  down
-                </a>
-              </span>
-            </td> -->
           <td>
-            <span class="table-remove">
-              <!-- <button
-                type="button"
-                mdbBtn
-                rounded="true"
-                size="sm"
-                class="btn btn-danger"
-              >
-              (click)="remove(item)" -->
-              <!-- Remove
-              </button> -->
-            </span>
+            <span class="table-remove"> </span>
 
             <i
               class="fa fa-pencil"

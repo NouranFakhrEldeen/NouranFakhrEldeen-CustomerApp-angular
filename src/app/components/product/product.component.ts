@@ -20,7 +20,13 @@ export class ProductComponent implements OnInit {
   ProductModel: ProductModel;
   IsChecked: false;
   allModifiers: ModifierModel[];
-  Modifiername: any[];
+  Modifiername: { _id: string; name: string }[];
+
+  dropdownSettings = {
+    singleSelection: false,
+    idField: "_id",
+    textField: "name"
+  };
   constructor(
     private repository: RepositoryService,
     private router: Router,
@@ -40,72 +46,42 @@ export class ProductComponent implements OnInit {
       price: new FormControl("", [Validators.required]),
       comment: new FormControl("", [Validators.required]),
       store: new FormControl("", [Validators.required]),
-      ModifierId: new FormControl("", [Validators.required])
+      quantity: new FormControl("", [Validators.required]),
+      Modifier: new FormControl("", [Validators.required])
     });
-    this.getModifier();
   }
   getModifier() {
     this.repository.get("Modifier").subscribe(
-      (res: any) => {
-        this.allModifiers = res;
+      (data: any[]) => {
+        debugger;
+        this.allModifiers = data as any[];
+        this.Modifiername = this.allModifiers.map(item => {
+          return { _id: item._id, name: item.name };
+        });
       },
-      (err: any) => {
-        this.toastr.error(err.error.message, "Error");
-      }
+
+      err => {},
+      () => {}
     );
   }
+
   getProduct() {
-    this.repository.get("Product").subscribe(
+    this.repository.get("Product/Modifier/").subscribe(
       (data: any[]) => {
         this.Products = data as any[];
-        let test = this.Products.map(a => a.Modifier);
-        this.Modifiername = this.Products.map(a => a.Modifiername);
-        let obj = {};
-
-        console.log("name", this.Modifiername);
-        test.forEach(element => {
-          this.repository.get(`Modifier/${element}`, element).subscribe(
-            (res: any) => {
-              this.Modifiername.push(res.name);
-
-              console.log("name", this.Modifiername);
-            },
-
-            (err: any) => {
-              this.toastr.error(err.error.message, "Error");
-            }
-          );
-        });
-
-        console.log(test);
         console.log("product", this.Products);
       },
       err => {},
       () => {}
     );
   }
-  getModifierById(item: any) {
-    this.repository.get(`Modifier/${item}`, item).subscribe(
-      (res: any) => {
-        // this.Products.map(function(res) {
-        //   var name = Object.assign({}, res);
-        //   name.name = res.name;
-        //   return name;
-        // });
 
-        this.Modifiername = res.name;
-        console.log("name", this.Modifiername);
-      },
-      (err: any) => {
-        this.toastr.error(err.error.message, "Error");
-      }
-    );
-  }
   openProductModel(template: TemplateRef<any>) {
     this.ProductForm;
 
     debugger;
     this.modalRef = this.modalService.show(template);
+    this.getModifier();
   }
 
   Reset() {
@@ -113,14 +89,17 @@ export class ProductComponent implements OnInit {
   }
   addProduct() {
     debugger;
+
     this.repository.post("Product", this.ProductForm.value).subscribe(
       (res: any) => {
+        debugger;
         this.Reset();
         this.toastr.success(
           "Success",
           "New Item added successfully to Products"
         );
         this.modalRef.hide();
+        this.Reset();
         this.getProduct();
       },
       (err: any) => {
@@ -172,5 +151,14 @@ export class ProductComponent implements OnInit {
     debugger;
 
     this.editProduct(this.ProductForm);
+  }
+
+  onItemSelect(item: any) {
+    console.log(item);
+    // this.ProductForm.value.Modifier.push(item);
+    // console.log(this.ProductForm.value.Modifier);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
   }
 }

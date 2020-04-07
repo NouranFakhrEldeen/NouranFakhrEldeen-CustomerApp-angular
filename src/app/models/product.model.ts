@@ -7,6 +7,5 @@ export class ProductModel {
   price: number;
   quantity: string;
   store: string;
-  Modifier: string;
-  Modifiername: string;
+  Modifier: ModifierModel[];
 }
