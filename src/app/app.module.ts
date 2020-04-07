@@ -12,13 +12,15 @@ import { ModifiersComponent } from "./components/modifiers/modifiers.component";
 import { ToastrModule } from "ngx-toastr";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { ProductComponent } from "./components/product/product.component";
+import { CategoryComponent } from "./components/category/category.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ModifiersComponent,
-    ProductComponent
+    ProductComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,9 @@
 export class CategoryModel {
-  categoryId: number;
-  categoryName: string;
+  _id: string;
+  name: string;
+  subCategory: SubCategoryModel[];
+}
+export class SubCategoryModel {
+  _id: string;
+  name: string;
 }

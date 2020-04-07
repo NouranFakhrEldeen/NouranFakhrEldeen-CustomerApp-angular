@@ -1,0 +1,127 @@
+<div class="card" style="margin:1rem; margin-top:5rem">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    Categories
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <button
+          class="btn "
+          style="margin: 1rem ; background-color: #008080 ; color: #ffffff"
+          (click)="openCategoryModel(Category)"
+        >
+          <i class="fa fa-plus"></i>
+          Add New Category
+        </button>
+      </span>
+      <table class="table  table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">SubCategory</th>
+
+          <th class="text-center">Action</th>
+        </tr>
+        <tr *ngFor="let item of Categories; let id = index">
+          <td>{{ item.name }}</td>
+          <td>
+            <div *ngFor="let element of item.subCategory">
+              {{ element.name }}
+            </div>
+          </td>
+
+          <td>
+            <span class="table-remove"> </span>
+
+            <i
+              class="fa fa-pencil"
+              style="margin: 4% ; color:#008080 ; font-size: 25px"
+              (click)="openEditModal(EditCategory, item)"
+            ></i>
+            <a (click)="remove(item)">
+              <i
+                class="fa fa-trash-o"
+                style="margin: 4% ;color: red; font-size: 25px"
+              ></i>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #Category>
+  <form
+    [formGroup]="CategoryForm"
+    (ngSubmit)="onSave(CategoryForm.value)"
+    style="margin: 10%"
+  >
+    <h2>
+      Add New Category
+    </h2>
+    <div class="form-group">
+      <input
+        style="margin-top:2rem"
+        type="text"
+        placeholder="name"
+        formControlName="name"
+        class="form-control"
+        [(ngModel)]="CategoryModel.name"
+        required
+      />
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-primary mr-1"
+        style="background-color: #008080"
+        type="submit"
+      >
+        Add
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="modalRef.hide()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #EditCategory>
+  <form
+    [formGroup]="CategoryForm"
+    (ngSubmit)="editCategory(CategoryForm.value)"
+    style="margin: 10%"
+  >
+    <h2>
+      Edit Selected Category
+    </h2>
+    <input
+      type="hidden"
+      formControlName="_id"
+      [(ngModel)]="CategoryModel._id"
+    />
+    <div class="form-group">
+      <input
+        style="margin-top:2rem"
+        type="text"
+        placeholder="name"
+        formControlName="name"
+        class="form-control"
+        [(ngModel)]="CategoryModel.name"
+        required
+      />
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-primary mr-1"
+        style="background-color: #008080"
+        type="submit"
+      >
+        Add
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="modalRef.hide()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-template>
