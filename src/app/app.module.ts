@@ -13,7 +13,7 @@ import { ToastrModule } from "ngx-toastr";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { ProductComponent } from "./components/product/product.component";
 import { CategoryComponent } from "./components/category/category.component";
-
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { CategoryComponent } from "./components/category/category.component";
     ToastrModule.forRoot(),
     ModalModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [RepositoryService],
   bootstrap: [AppComponent]

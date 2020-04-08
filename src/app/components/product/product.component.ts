@@ -20,6 +20,7 @@ export class ProductComponent implements OnInit {
   ProductModel: ProductModel;
   IsChecked: false;
   allModifiers: ModifierModel[];
+  searchText;
   Modifiername: { _id: string; name: string }[];
 
   dropdownSettings = {
