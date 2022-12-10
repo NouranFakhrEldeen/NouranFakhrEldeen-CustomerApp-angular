@@ -5037,19 +5037,17 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-ng-multiselect-dropdown-angular7@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/ng-multiselect-dropdown-angular7/-/ng-multiselect-dropdown-angular7-0.1.5.tgz#e0192cc6ffba33c4130f655e49e2a78ce36a4bd5"
-  integrity sha512-xEUwh4ypLE5eT/JVJFYCQzY97cafKDlhnKcrB/MGA/B1WILRMV/sNkyZ6KwvjsUTODefS7NE318tLj1nHGBiEw==
-  dependencies:
-    tslib "^1.9.0"
-
 ng-multiselect-dropdown@^0.2.10:
   version "0.2.10"
   resolved "https://registry.yarnpkg.com/ng-multiselect-dropdown/-/ng-multiselect-dropdown-0.2.10.tgz#464dfe34c09d23b1ba8eb851663d05f4614fd1aa"
   integrity sha512-X7JlVgWMUmkabWxGNxlNmPmBi/dPAPTSc5lkBmeZbWBehL+yrfrHVAs2F27w5genI7u64CIR1AHMINy51/ueUg==
   dependencies:
     tslib "^1.9.0"
+
+ng2-search-filter@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/ng2-search-filter/-/ng2-search-filter-0.5.1.tgz#6d5f4e26bd2b2c8c8cc4aad658aabae6a33fb4af"
+  integrity sha512-noN8R+Gyxo5ZuboEOvq+u0zKio6pEf1IVYQTCZfAfXm6ONmzWu/M2xK0di9oVUprDbPBQXCGUuvD5i2GD+35HA==
 
 ngx-bootstrap@^5.5.0:
   version "5.5.0"
@@ -5917,9 +5915,9 @@ qs@6.7.0:
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 query-string@^4.1.0:
   version "4.3.4"
